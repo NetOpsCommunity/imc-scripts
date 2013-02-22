@@ -8,8 +8,8 @@
 		</service>
 
 		<service name="CleanupParser">
-			<item type="parser_definition">HPProcurve_Cleanup_Parser.xml</item>
-			<item type="perl_script">HPProcurve_Cleanup_Parser_Script.pl</item>
+			<item type="parser_definition">FortiOS_Cleanup_Parser.xml</item>
+			<item type="perl_script">FortiOS_Cleanup_Parser_Script.pl</item>
 		</service>
 
 		<service name="ConfigBackup">
