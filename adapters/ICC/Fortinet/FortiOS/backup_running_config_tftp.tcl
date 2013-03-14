@@ -5,6 +5,8 @@
 #**************************************************************************
 
 set timeout $standard_timeout
+send "config global\r"
+expect $prompt
 send "execute backup config tftp $TFTPFile $TFTPServer\r"
 expect $prompt
 set timeout $standard_timeout
