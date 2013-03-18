@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- check config deploy result SNMP -->
+
+<!--
+$index:     random generate index used for snmp set operation.
+data-type:  INTEGER/Integer32/IpAddress/DisplayString/ObjectIdentifier/RowStatus
+            default is INTEGER                
+oper-type:  SET/GET/GETNEXT , default is SET   
+            SET,     snmp set operation;
+            GET,     snmp get operation;
+            GETNEXT, snmp getnext operation.        
+func-type:  Common/CheckResult, default is Common
+            Common, commit snmp operation;
+            CheckResult, check if the operation result is success.
+-->
+
+<definition>
+	<name>check_config_backup_snmp</name>
+	<desc>A table of config-operation requests result.chack backup result.</desc>
+    <func-type>CheckResult</func-type>
+    <oper-type>GET</oper-type>
+    <error>Failed to deploy simage file to device by snmp, commit snmp failed.</error>
+    
+    <!-- The timeout for checking the operation. -->
+	<timeout>300</timeout>
+	
+	<vb-list>
+		<vb>
+			<oid>1.3.6.1.4.1.9.9.96.1.1.1.1.10.$index</oid>
+			<var-name>$ccCopyState</var-name>
+			<waitting-value>1</waitting-value>
+			<running-value>2</running-value>
+			<expected-value>3</expected-value>		
+		</vb>				
+	</vb-list>
+</definition>

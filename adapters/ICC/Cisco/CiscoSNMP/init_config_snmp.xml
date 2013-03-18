@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- backup startup config by SNMP         -->
+<!--
+%index:     random generate index used for snmp set operation.
+data-type:  INTEGER/Integer32/IpAddress/DisplayString/ObjectIdentifier/RowStatus
+            default is INTEGER                
+oper-type:  SET/GET/GETNEXT , default is SET   
+            SET,     snmp set operation;
+            GET,     snmp get operation;
+            GETNEXT, snmp getnext operation.        
+func-type:  Common/CheckResult/CheckExecResult, default is Oper
+            Common, commit snmp operation;
+            CheckResult, check if the snmp operation result is success;
+            CheckExecResult, check is the snmp exection result is success.
+-->
+<definition>
+	<min-index>1</min-index>
+	<max-index>65536</max-index>
+ 
+	<name>backup_running_config_snmp</name>
+	<desc>delete row with index $index</desc>
+    <func-type>Common</func-type>
+    <oper-type>SET</oper-type>
+    
+    <vb-list>  	
+		<vb>
+			<oid>1.3.6.1.4.1.9.9.96.1.1.1.1.14.$index</oid>
+			<value>6</value>
+			<data-type>RowStatus</data-type>
+		</vb>	
+    </vb-list>		
+</definition>

@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<definition>
+
+	<action name="deploy_image">		
+		<step>
+			<command name="getversion_cli" description="Determine device model"/>
+		</step>		
+		<step>
+			<command name="determine_tar">
+				<result name="testvalue">
+					<parser key="determine_tar" parserName="CleanupParser" parserRet="testvalue" parserScript="getTarValue"/>
+				</result>
+			</command>
+		</step>
+		<step>
+			<command name="determine_boot">
+				<result name="bootvalue">
+					<parser key="determine_boot" parserName="CleanupParser" parserRet="bootvalue" parserScript="getBootValue"/>
+				</result>
+			</command>
+		</step>
+		<step>
+			<command name="deploy_image" description="deploy image to device via TFTP">
+				<condition property="testvalue" value="false"/> <!-- is not tar -->
+			</command>
+			<command name="deploy_image_ftp" description="deploy image to device via FTP">
+				<condition property="testvalue" value="false"/> <!-- is not tar -->
+			</command>
+			<command name="deploy_image_extract" description="deploy image to device via CLI">
+				<condition property="testvalue" value="true"/> <!-- is tar -->
+			</command>
+			<command name="deploy_image_scp" description="download image via SCP"/>
+		</step>
+        <step>
+            <command name="verify_image" description="verify image via CLI"/>
+        </step>
+		<step>
+			<command name="extract_tar" description="extract image via CLI">
+				<condition property="testvalue" value="true"/>
+			</command>
+		</step>
+		<!--step>
+			<command name="clearboot_cli" description="clear OS boot order via CLI">
+                <condition property="testvalue" value="true"/>
+            </command>
+			<command name="set_device_boot" description="set OS boot order via CLI">
+                <condition property="testvalue" value="false"/>
+            </command>
+		</step-->
+	</action>
+
+    <action name="set_device_boot">
+		<step>
+			<command name="determine_boot">
+				<result name="bootvalue">
+					<parser key="determine_boot" parserName="CleanupParser" parserRet="bootvalue" parserScript="getBootValue"/>
+				</result>
+			</command>
+		</step>
+        <step>
+			<command name="clearboot_cli" description="clear OS boot order via CLI"/>
+        </step>
+        <step>
+            <command name="set_device_boot" description="set OS boot order via CLI"/>
+        </step>
+    </action>
+
+	<action name="delete_image">
+		<step>
+			<command name="delete_image" description="delete device image file"/>
+		</step>
+	</action>
+
+	<action name="get_image_position">
+		<step>
+			<command name="get_image_position" description="get current image file position">
+				<result name="image_position">
+					<parser parserName="CleanupParser" parserRet="image_position" parserScript="cleanupImagePosition"/>
+				</result>
+			</command>
+		</step>
+	</action>
+	
+    <action name="get_image_version">
+		<step>
+    		<command name="get_image_version" description="Get device image file name via CLI">
+    			<result name="image_version">
+    				<parser parserName="CleanupParser" parserRet="image_version" parserScript="cleanupImageVersion"/>
+    			</result>
+    		</command>
+		</step>
+	</action>
+	
+	<action name="get_image_size">
+		<step>
+    		<command name="get_image_size" description="Get device image file size via CLI">
+    			<result name="image_size">
+    				<parser parserName="CleanupParser" parserRet="image_size" parserScript="cleanupImageSize"/>
+    			</result>
+    		</command>
+		</step>
+	</action>
+	
+	<action name="get_partion_info">
+		<step>
+    		<command name="get_partion_info" description="Get device partion info via CLI">
+    			<result name="partion_name">
+    				<parser parserName="CleanupParser" parserRet="partion_name" parserScript="cleanupPartionName"/>
+    			</result>
+    			<result name="free_size">
+    				<parser parserName="CleanupParser" parserRet="free_size" parserScript="cleanupFreeSize"/>
+    			</result>
+    		</command>
+		</step>
+	</action>
+</definition>

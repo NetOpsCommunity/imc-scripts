@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<scripts>
+    <command name="init_config_deploy">
+		<error>Failed to delete row of h3cCfgOperateTable.</error>		
+		<script>
+            init_config_snmp.xml
+		</script>
+	</command>
+	
+	<command name="deploy_running_config_snmp" method="TFTP">
+		<error>Failed to download running configuration to TFTP server.  TFTP server may be down, or incorrectly specified, command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<script>
+        	deploy_running_config_snmp.xml
+		</script>
+	</command>
+	
+	<command name="deploy_startup_config_snmp" method="TFTP">
+		<error>Failed to download startup configuration to TFTP server.  TFTP server may be down, or incorrectly specified, command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<script>
+        	deploy_startup_config_snmp.xml
+		</script>
+	</command>
+	
+	<command name="deploy_running_config_snmp_ftp" method="FTP">
+		<error>Failed to download running configuration to FTP server.  FTP server may be down, or incorrectly specified, command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<script>
+        	deploy_running_config_snmp_ftp.xml
+		</script>
+	</command>
+	
+	<command name="deploy_startup_config_snmp_ftp" method="FTP">
+		<error>Failed to download startup configuration to FTP server.  FTP server may be down, or incorrectly specified, command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<script>
+        	deploy_startup_config_snmp_ftp.xml
+		</script>
+	</command>
+	
+	<command name="check_config_deploy">
+		<error>Failed to check configuration file deploy result.</error>		
+		<script>
+            check_config_result_snmp.xml
+		</script>
+	</command>
+		
+	<command name="reload_device">
+	    <error>Failed to reload device via SNMP.</error>
+		<script>
+        	reload_device_snmp.xml
+		</script>
+	</command>
+	
+	<command name="save_config">
+	    <error>An error occurred while trying to save the configuration.</error>
+		<script>
+        	save_config_snmp.xml
+		</script>
+	</command>
+
+</scripts>
+

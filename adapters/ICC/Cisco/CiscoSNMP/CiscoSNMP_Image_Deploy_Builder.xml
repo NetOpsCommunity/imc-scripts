@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<definition>
+
+	<action name="deploy_image">		
+		<step>
+			<command name="deploy_image" description="download image via TFTP"/>
+			<command name="deploy_image_ftp" description="download image via FTP"/>
+		</step>
+			
+		<step>
+			<command name="check_deploy_image" description="check if download image via TFTP is success."/>
+		</step>	
+	</action>
+	
+	<action name="set_device_boot">	
+        <step>
+            <properties>
+    			<property name="board" refer="board_number"/>
+    		</properties>
+            <command name="set_device_boot" description="set OS boot order via CLI"/>
+        </step>
+    </action>
+	
+	<action name="delete_image">	
+		<step>
+			<command name="delete_image" description="delete specified image"/>
+		</step>
+	</action>	
+	
+	<action name="get_image_info">	
+		<step>
+			<command name="get_cut_image_index" description="get current image index"/>
+		</step>
+		
+		<step>
+			<properties>
+    			<property name="index" refer="CurIndex"/>
+    		</properties>
+			<command name="get_cur_image_info" description="get current image info"/>
+		</step>
+	</action>	
+</definition>

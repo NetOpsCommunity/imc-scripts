@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<scripts>
+	<command name="init_config_backup">
+		<error>Failed to delete row of h3cCfgOperateTable.</error>		
+		<script>
+            init_config_snmp.xml
+		</script>
+	</command>
+	
+	<command name="backup_running_config" method="TFTP">
+		<error>Failed to upload running configuration to TFTP server. TFTP server may be down, or incorrectly specified, or the device may not support SNMP.</error>		
+		<script>
+            backup_running_config_snmp.xml
+		</script>
+	</command>
+	
+	<command name="backup_running_config_ftp" method="FTP">
+		<error>Failed to upload running configuration to FTP server. FTP server may be down, or incorrectly specified, or the device may not support SNMP.</error>		
+		<script>
+            backup_running_config_snmp_ftp.xml
+		</script>
+	</command>
+
+	<command name="backup_startup_config" method="TFTP">
+		<error>Failed to upload startup configuration to TFTP server. TFTP server may be down, or incorrectly specified, or the device may not support SNMP.</error>		
+		<script>
+            backup_startup_config_snmp.xml
+		</script>
+	</command>
+	
+	<command name="backup_startup_config_ftp" method="FTP">
+		<error>Failed to upload startup configuration to FTP server. FTP server may be down, or incorrectly specified, or the device may not support SNMP.</error>		
+		<script>
+            backup_startup_config_snmp_ftp.xml
+		</script>
+	</command>
+	
+	<command name="check_config_backup">
+		<error>Failed to check configuration file backup result.</error>		
+		<script>
+            check_config_result_snmp.xml
+		</script>
+	</command>
+
+	<command name="cleanup_config_backup">
+		<error>Failed to properly clean up configuration.</error>		
+		<script>
+            cleanup_config_backup.tcl
+		</script>
+	</command>
+
+</scripts>
