@@ -2,7 +2,9 @@ Custom Scripts and adapters for HP's Intelligent Management Center (IMC)
 
 These scripts have been contributed by members of www.netopscommunity.net. They are provided free of charge, but with NO GUARANTEE WHATSOEVER. These are not officially supported by HP.
 
-These scripts are intended to extend the capabilities of IMC, supporting devices that HP does not support out of the box. Core functions we hope to provide are for Configuration Backup and Resore. Anything else - software image management, VLAN management, etc - is a bonus.
+These scripts are intended to extend the capabilities of IMC, supporting devices that HP does not support out of the box. Core functions we hope to provide are for Configuration Backup and Restore. Anything else - software image management, VLAN management, etc - is a bonus.
+
+In some cases, the scripts enhance functionality provided by HP - e.g. the Cisco adapter will strip out "ntp clock-period" from backups, to prevent false "config changed" alarms.
 
 If you have any problems with any scripts, post it at www.netopscommunity.net, and we'll try to help.
 
