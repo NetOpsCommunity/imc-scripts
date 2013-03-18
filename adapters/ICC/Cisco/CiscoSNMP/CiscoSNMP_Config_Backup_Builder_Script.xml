@@ -43,8 +43,8 @@
 		</script>
 	</command>
 
-	<command name="cleanup_config_backup">
-		<error>Failed to properly clean up configuration.</error>		
+	<command name="cleanup_config_backup" method="SNMP">
+		<error>Failed to cleanup configuration.</error>
 		<script>
             cleanup_config_backup.tcl
 		</script>

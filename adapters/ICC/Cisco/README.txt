@@ -8,8 +8,10 @@ frequently changes by itself.
 These have been tested out against a Cisco IOS switch, and appear to work for TFTP, FTP, CLI, SCP 
 backup methods. It does NOT currently work for backups done using SNMP read/write.
 
-The CiscoIOSGeneric adapter should be further modified to use a centralised cleanup script, rather
-than the current method of editing each of the backup scripts.
+The CiscoIOSGeneric adapter uses a centralised "cleanup_config_backup" script, which is 
+automatically called by the Cisco_Config_Backup_Builder.xml script. By doing it this way,
+we leave the default *.tcl files alone. The only changes are to add an extra step to the 
+Config_Backup_Builder.xml file, and to add the new script file.
 
 The CiscoSNMP adapter should call a cleanup script after running the backup. Currently this is 
 not working. The logs indicate it can't find the cleanup_config_backup_.tcl script, although all

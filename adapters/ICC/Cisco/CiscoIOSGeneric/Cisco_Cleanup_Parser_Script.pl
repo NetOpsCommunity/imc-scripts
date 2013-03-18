@@ -201,8 +201,6 @@ sub removeMores
 	##
 	# ACNS
 	$rawdata =~ s/ ?--More--[\s\cH]+|\033\[K//g;
-	# Strip out "ntp clock-period XXXX" line to stop false config change alarms
-	$rawdata =~ s/ntp clock-period [0-9]*\n//g;
 	return $rawdata;
 }
 

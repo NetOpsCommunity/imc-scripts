@@ -198,21 +198,5 @@ if { $ERROR_RESULT == "true" } {
 	return
 }
 
-
-set infile [open $TFTPFileLocal r]
-set outfile [open $TFTPFile w]
-
-while {[gets $infile line] >= 0} {
-
-	if {[regexp "^ntp clock-period .*" $line]} {
-       		# Strip out clock-period line, as it changes on each backup
-        } else {
-        	puts $outfile $line
-        }
-}
-
-close $infile
-close $outfile
-
-
+file copy -force $TFTPFileLocal $TFTPFile 
 file delete -force $TFTPFileLocal

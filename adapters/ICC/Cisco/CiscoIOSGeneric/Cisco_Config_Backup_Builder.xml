@@ -14,6 +14,10 @@
     			</result>
     		</command>
 		</step>
+	    <step>
+		<command name="cleanup_config_backup" description="Strip out unnecessary lines from config">
+		</command>
+	    </step>
 	</action>
 
 	<action name="backup_startup_config">
@@ -28,6 +32,10 @@
     			</result>
     		</command>
 		</step>
+	    <step>
+		<command name="cleanup_config_backup" description="Strip out unnecessary lines from config">
+		</command>
+	    </step>
 	</action>  
 </definition>
 

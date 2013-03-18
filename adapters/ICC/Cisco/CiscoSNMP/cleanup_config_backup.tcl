@@ -1,6 +1,6 @@
 
 #**************************************************************************
-#Identification: cleanup_config_backup
+#Identification:cleanup_config_backup
 #Purpose:        Remove unnecessary lines from config backed up via SNMP
 #**************************************************************************
 

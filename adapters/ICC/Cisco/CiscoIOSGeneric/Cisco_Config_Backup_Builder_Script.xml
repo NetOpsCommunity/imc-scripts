@@ -58,4 +58,11 @@
 		</script>
 	</command>
 
+	<command name="cleanup_config_backup" method="CLI">
+		<error>Failed to cleanup config.</error>
+		<require-mode>initialize</require-mode>
+		<script>
+            cleanup_config_backup.tcl
+		</script>
+	</command>
 </scripts>

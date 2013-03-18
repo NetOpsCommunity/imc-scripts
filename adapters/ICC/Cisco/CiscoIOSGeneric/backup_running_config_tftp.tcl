@@ -7,13 +7,6 @@
 
 	set timeout $long_timeout
 	set WARNING_RESULT true
-
-	set TFTPFileWorking $TFTPFile
-        append TFTPFileWorking "working"
-
-        set TFTPRoot [pwd]
-        append TFTPRoot "/../tmp/"
-
 	send "copy $runningConfig tftp:\r"
     expect { 
 		-re "Unable to (read|get) configuration" {
@@ -31,7 +24,7 @@
 		} "\\?" {
     		send "$TFTPServer\r"
             expect "\\?"
-            send "$TFTPFileWorking\r"
+            send "$TFTPFile\r"
             expect {
 				"bytes copied" {
 					expect $enable_prompt
@@ -56,27 +49,3 @@
 		set WARNING_RESULT false
 	}
 	set timeout $standard_timeout
-
-
-        set TFTPFileWorkingFullPath $TFTPRoot
-        append TFTPFileWorkingFullPath $TFTPFileWorking
-
-        set TFTPFileFullPath $TFTPRoot
-        append TFTPFileFullPath $TFTPFile
-
-        set infile [open $TFTPFileWorkingFullPath r]
-        set outfile [open $TFTPFileFullPath w]
-
-        while {[gets $infile line] >= 0} {
-
-                if {[regexp "^ntp clock-period .*" $line]} {
-                        # Strip out clock-period line, as it changes on each backup
-                } else {
-                        puts $outfile $line
-                }
-        }
-
-        close $infile
-        close $outfile
-
-        file delete -force $TFTPFileWorkingFullPath
