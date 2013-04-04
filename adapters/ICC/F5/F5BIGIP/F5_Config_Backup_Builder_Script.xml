@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<scripts>
+	<command name="save_sys_ucs" method="CLI">
+		<error>Failed to Saves the currently running configuration to the specified *.ucs file.</error>
+		<require-mode>tmsh</require-mode>
+		<script>
+            save_sys_ucs.tcl
+		</script>
+	</command>
+
+	<command name="backup_running_config_ftp" method="FTP">
+		<error>Failed to upload configuration to FTP server.  FTP server may be down, or incorrectly specified, command syntax may be incorrect, or prompts may not be what was expected.</error>		
+		<require-mode>exec</require-mode>		
+		<script>
+            backup_running_config_ftp.tcl
+		</script>
+	</command>
+
+	<command name="backup_startup_config_ftp" method="FTP">
+		<error>Failed to upload startup configuration to FTP server.  FTP server may be down, or incorrectly specified, command syntax may be incorrect, or prompts may not be what was expected.</error>		
+		<require-mode>exec</require-mode>	
+		<script>
+            backup_startup_config_ftp.tcl
+		</script>
+	</command>
+
+</scripts>
