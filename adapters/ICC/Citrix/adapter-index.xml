@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--sysoid adapt adapter-->
+<adapters>
+	
+    
+    <type name="CLI">
+        <default>Netscaler</default>
+        
+        <adapter name="Netscaler">
+    		<description>Citrix Netscaler VPX.</description>
+            <sysoid>1.3.6.1.4.1.5951.1</sysoid>
+        </adapter>
+
+	</type>
+
+</adapters>

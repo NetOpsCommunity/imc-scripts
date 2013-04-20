@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<scripts>
+	<command name="backup_running_config_cli" method="CLI">
+		<error>Failed to dump configuration in CLI.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>exec</require-mode>
+		<script>
+            backup_running_config_cli.tcl
+		</script>
+	</command>
+	
+	<command name="backup_running_config_sftp" method="SFTP-CLIENT">
+		<error>Failed to dump configuration in SFTP.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>sftp-exec</require-mode>
+		<script>
+            backup_running_config_sftp.tcl
+		</script>
+	</command>
+
+	<command name="save_running_config" method="CLI">
+		<error>Failed to save running configuration in CLI.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>exec</require-mode>
+		<script>
+            save_running_config.tcl
+		</script>
+	</command>
+
+	<command name="backup_startup_config_cli" method="CLI">
+		<error>Failed to dump startup configuration in CLI.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>exec</require-mode>
+		<script>
+            backup_startup_config_cli.tcl
+		</script>
+	</command>
+
+	<command name="backup_startup_config_sftp" method="SFTP-CLIENT">
+		<error>Failed to upload startup configuration to SFTP server.  SFTP server may be down, or incorrectly specified, command syntax may be incorrect, or prompts may not be what was expected.</error>		
+		<require-mode>sftp-exec</require-mode>	
+		<script>
+            backup_startup_config_sftp.tcl
+		</script>
+	</command>
+
+</scripts>
+

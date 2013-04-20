@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<common>
+    <mode name="initialize" method="cli">
+        <require-mode>connect</require-mode>
+        <enter>
+            initialize.tcl
+        </enter>
+    </mode>
+
+    <mode name="exec" method="cli">
+        <error>Failed to get to exec mode. </error>
+        <require-mode>initialize</require-mode>
+        <enter>
+            enter_exec.tcl
+        </enter>
+        <exit>
+            exit_exec.tcl
+        </exit>
+    </mode>
+
+    <mode name="sftp-exec" method="cli">
+        <error>Failed to get to exec mode. </error>
+        <require-mode>initialize</require-mode>
+        <enter>
+            enter_sftp_exec.tcl
+        </enter>
+        <exit>
+            exit_exec.tcl
+        </exit>
+    </mode>
+
+	<function name="cleanup" method="CLI">
+        <error>An error occurred while trying to recover from an unexpected prompt.</error>
+        <enter>
+            clearup.tcl
+        </enter>
+    </function>
+
+	<function name="delete_file" method="CLI">
+		<error>An error occurred while trying to delete a file from the device.</error>	
+		<enter>
+			delete_file.tcl
+		</enter>
+	</function>	
+	
+	<function name="save" method="CLI">
+        <error>An error occurred while trying to save the configuration.</error>
+        <enter>
+            save.tcl
+        </enter>
+    </function>
+
+</common>
+
