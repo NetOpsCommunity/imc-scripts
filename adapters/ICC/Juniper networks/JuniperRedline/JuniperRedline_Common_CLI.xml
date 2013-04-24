@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<common>
+    <mode name="initialize" method="cli">
+        <require-mode>connect</require-mode>
+        <enter>
+            initialize.tcl
+        </enter>
+    </mode>
+
+    <mode name="admincli" method="cli">
+        <error>Failed to get to cli as an administrator.</error>
+        <require-mode>initialize</require-mode>
+        <enter>
+            enter_admincli.tcl
+        </enter>
+        <exit>
+            exit_admincli.tcl
+        </exit>
+    </mode>
+</common>

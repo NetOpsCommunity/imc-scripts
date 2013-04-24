@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<scripts>
+	
+	<command name="deploy_image" method="CLI">
+		<error>Failed to retrieve image in CLI.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>enable</require-mode>		
+		<script>
+            deploy_image.tcl
+		</script>
+	</command>
+
+	<command name="delete_image" method="CLI">
+		<require-mode>enable</require-mode>
+		<script>
+            delete_image.tcl
+		</script>
+	</command>
+	
+	<command name="set_device_boot" method="CLI">
+		<require-mode>enable</require-mode>
+		<script>
+            set_device_boot.tcl
+		</script>
+	</command>
+	
+	<command name="get_image_version" method="CLI">
+		<error>Failed to get version information in CLI.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>enable</require-mode>
+		<script>
+            get_image_version.tcl
+		</script>
+	</command>
+	
+	<command name="get_image_position" method="CLI">
+		<error>Failed to get current image position information in CLI.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>enable</require-mode>
+		<script>
+            get_image_position.tcl
+		</script>
+	</command>
+
+    <command name="get_image_size" method="CLI">
+		<error>Failed to get current image size information in CLI.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>enable</require-mode>
+		<script>
+            get_image_size.tcl
+		</script>
+	</command>
+	
+	<command name="get_partion_info" method="CLI">
+		<error>Failed to get partion information in CLI.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>enable</require-mode>
+		<script>
+            get_partion_info.tcl
+		</script>
+	</command>
+</scripts>
