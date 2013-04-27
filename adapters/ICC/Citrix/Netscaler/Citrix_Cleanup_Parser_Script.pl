@@ -355,24 +355,30 @@ sub stripLastLine
 
 sub cleanupConfiguration
 {
-	my($config) = @_;
+        my($config) = @_;
 
-	# CLI sometimes leaks in some syslog messages.. remove them _first_ [important]
-	$config =~ s/(^|\n)\%.*//g; 
+        # CLI sometimes leaks in some syslog messages.. remove them _first_ [important]
+        $config =~ s/(^|\n)\%.*//g;
 
-	$cleanConfig =  removeMores($config);
-	$cleanConfig =~ s/show ns runningConfig\n//;
-	$cleanConfig =~ s/show ns savedConfig\n//;
-	$cleanConfig =~ s/.*Done\n//;
-	$cleanConfig =  stripLastLine($cleanConfig);
+        #Find start of config - line looks like "#NS10.0 Build XX.Y"
+        $start = index($config, "\#NS");
+        if ($start == -1)
+        {
+                $start = 0;
+        }
+        $cleanConfig = substr($config, $start);
 
-	# Add a leading newline to match file transfer results
-	$cleanConfig = "\n".$cleanConfig;
+        #"Last modified by" line changes every time "show ns runningConfig" is run
+        $cleanConfig =~ s/\# Last modified by .*\n//;
 
-	# This driver requires that deployed configurations contain \r\n's
-	$cleanConfig =~ s/\n/\r\n/g;
+        # Remove the " Done" line seen at the end of "show ns runningConfig/savedConfig"
+        $cleanConfig =~ s/\n.*Done.*\n/\n/;
 
-	return $cleanConfig;
+        #Get rid of the exec prompt at the end, and any blank lines
+	$cleanConfig =~ s/\n\>.*$/\n/;
+	$cleanConfig =~ s/\n+$//;
+
+        return $cleanConfig;
 }
 
 sub cleanupStartupConfiguration
@@ -450,4 +456,3 @@ sub cleanupInventory
 
 	return $cleandata;
 }
-
