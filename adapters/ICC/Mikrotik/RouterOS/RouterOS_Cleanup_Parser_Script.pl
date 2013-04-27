@@ -355,22 +355,31 @@ sub stripLastLine
 
 sub cleanupConfiguration
 {
-	my($config) = @_;
+        my($config) = @_;
 
-	# CLI sometimes leaks in some syslog messages.. remove them _first_ [important]
-	$config =~ s/(^|\n)\%.*//g; 
+        # CLI sometimes leaks in some syslog messages.. remove them _first_ [important]
+        $config =~ s/(^|\n)\%.*//g;
 
-	$cleanConfig =  removeMores($config);
-	$cleanConfig =~ s/display current-configuration\n//;
-	$cleanConfig =  stripLastLine($cleanConfig);
+        $start = index($config, "\# software id = ");
+        if ($start == -1)
+        {
+                $start = 0;
+        }
 
-	# Add a leading newline to match file transfer results
-	$cleanConfig = "\n".$cleanConfig;
+        $cleanConfig = substr($config, $start);
 
-	# This driver requires that deployed configurations contain \r\n's
-	$cleanConfig =~ s/\n/\r\n/g;
+        #Re-join lines that have been split. Note some lines split at "=", others split between X=Y and A=B
+        $cleanConfig =~ s/=\\\n\s*/=/;
+        $cleanConfig =~ s/\s*\\\n\s*/ /g;
 
-	return $cleanConfig;
+        #Get rid of the exec prompt at the end, and any blank lines
+        $cleanConfig =~ s/\[.*\] \>.*/\n/;
+        $cleanConfig =~ s/\n+$//;
+
+        # Add a trailing newline to match file transfer results
+        $cleanConfig = $cleanConfig . "\n";
+
+        return $cleanConfig;
 }
 
 sub cleanupStartupConfiguration
