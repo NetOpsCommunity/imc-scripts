@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <parser>
-    <perlfile>HPProcurve_Cleanup_Parser_Script.pl</perlfile>
+    <perlfile>FortiOS_Cleanup_Parser_Script.pl</perlfile>
     
     <script name="cleanupPartionName">
 		<callfunction name="cleanupPartionName">

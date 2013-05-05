@@ -5,6 +5,8 @@
 	    <step>    		
 	       	<command name="backup_running_config_tftp" description="Backup running configuration via TFTP through CLI">
     		</command> 
+	       	<command name="backup_running_config_ftp" description="Backup running configuration via FTP through CLI">
+    		</command> 
     		<command name="backup_running_config_scp" description="Backup running configuration via scp">
     		</command>		 	        		
 		</step>
@@ -13,6 +15,8 @@
 	<action name="backup_startup_config">
 	    <step>    		
 	       	<command name="backup_running_config_tftp" description="Backup running configuration via TFTP through CLI">
+    		</command> 
+	       	<command name="backup_running_config_ftp" description="Backup running configuration via FTP through CLI">
     		</command> 
     		<command name="backup_running_config_scp" description="Backup running configuration via scp">
     		</command>		 	        		

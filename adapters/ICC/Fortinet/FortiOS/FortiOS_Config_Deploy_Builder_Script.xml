@@ -9,6 +9,13 @@
 		</script>
 	</command>
 	
+	<command name="deploy_startup_config_ftp" method="FTP">
+		<error>Failed to download configuration from FTP server.  FTP server may be down, or incorrectly specified, command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>exec</require-mode>
+		<script>
+            deploy_startup_config_ftp.tcl
+		</script>
+	</command>
 	
 	<command name="deploy_startup_config_scp" method="SCP">
 		<error>Failed to download configuration from SCP server.  SCP server may be down, or incorrectly specified, command syntax may be incorrect, or prompts may not be what was expected.</error>

@@ -4,6 +4,7 @@
 	<action name="deploy_startup_config">
 		<step>
 			<command name="deploy_startup_config_tftp" description="deploy to startup configuration via TFTP through CLI"/>
+			<command name="deploy_startup_config_ftp" description="deploy to startup configuration via FTP through CLI"/>
 			<command name="deploy_startup_config_scp" description="deploy to startup configuration via SCP through CLI"/>
 		</step>
 	</action>

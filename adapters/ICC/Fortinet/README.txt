@@ -7,6 +7,13 @@ If you are using SCP for backups, you may need to run these commands on the Fort
 	set admin-scp enable
 	end
 
-If you use SCP, it will get all configuration for all VDOMS. If you are not using SCP, it may not retrieve all configuration. The file backup_running_config_tftp.tcl may need to be extended, to send "sconfig global" before running the backup.
+If you use SCP, it will get all configuration for all VDOMS. The TFTP and FTP scripts send "config global" first, so they should also retrieve config for all VDOMs.
 
 Original Netops post here: http://www.netopscommunity.net/en_GB/forums/-/message_boards/message/36468
+
+
+TODO:
+ * Test FTP backups - adapter has not been fully tested
+ * Write a CLI adapter. Needs to send "config global" followed by "show full-configuration". Also needs Parser script sorted out
+ * Test deployment scripts, with all methods. 
+ * Image deployment - this exists, but has not been tested at all. Needs testing. Low priority.
