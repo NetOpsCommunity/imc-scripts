@@ -14,7 +14,7 @@ append TFTPFileLocal "/../bin/"
 append TFTPFileLocal $FileName
 
 if { $keyfile != "" } {
-   spawn pscp -scp -i \"$keyfile\" $username@$deviceip:/cfg/running-config $FileName
+   spawn pscp -scp -i \"$keyfile\" $username@$deviceip:sys_config $FileName
 } else {
    spawn pscp -scp $username@$deviceip:sys_config $FileName
 }

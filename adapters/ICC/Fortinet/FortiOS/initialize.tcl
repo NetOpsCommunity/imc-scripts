@@ -13,7 +13,7 @@ set tftpDelay 10
 set imageDelay 60
 set username_prompt ogin:
 set password_prompt assword:
-set prompt "# "
+set exec_prompt "# "
 set enforce_save true
 set timeout $standard_timeout
 

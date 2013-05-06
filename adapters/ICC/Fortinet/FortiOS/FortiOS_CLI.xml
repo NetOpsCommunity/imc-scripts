@@ -8,20 +8,9 @@
         </enter>
     </mode>
     
-    <mode name="menu" method="cli">
-        <error>Failed to get to menu mode. </error>
-        <require-mode>initialize</require-mode>
-        <enter>
-            enter_menu.tcl
-        </enter>
-        <exit>
-            exit_menu.tcl
-        </exit>
-    </mode>
-
     <mode name="exec" method="cli">
         <error>Failed to get to exec mode. </error>
-        <require-mode>menu</require-mode>
+        <require-mode>initialize</require-mode>
         <enter>
             enter_exec.tcl
         </enter>

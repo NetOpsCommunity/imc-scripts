@@ -5,10 +5,3 @@
 #**************************************************************************
 
 send "exit\r"
-expect {
-	"TELNET - MANAGER" {
-	} $prompt {
-		send "exit\r"
-		expect "TELNET - MANAGER"
-	}
-}

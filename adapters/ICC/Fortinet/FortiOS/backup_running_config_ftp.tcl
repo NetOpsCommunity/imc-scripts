@@ -6,7 +6,7 @@
 
 set timeout $standard_timeout
 send "config global\r"
-expect $prompt
+expect $exec_prompt
 send "execute backup config ftp $TFTPFile $TFTPServer $FTPUser $FTPPassword\r"
-expect $prompt
+expect $exec_prompt
 set timeout $standard_timeout

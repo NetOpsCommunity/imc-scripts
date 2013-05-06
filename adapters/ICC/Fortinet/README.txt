@@ -13,7 +13,7 @@ Original Netops post here: http://www.netopscommunity.net/en_GB/forums/-/message
 
 
 TODO:
- * Test FTP backups - adapter has not been fully tested
- * Write a CLI adapter. Needs to send "config global" followed by "show full-configuration". Also needs Parser script sorted out
+ * Write a CLI adapter. Problem is that only command available seems to be "show full-configuration", which includes all default configs
+	This makes it different to the other backup methods. Need to find way of showing config via CLI that only includes changes.
  * Test deployment scripts, with all methods. 
  * Image deployment - this exists, but has not been tested at all. Needs testing. Low priority.
