@@ -120,6 +120,10 @@ proc ftp_trans_file {putFlag sourceFile destFile} {
         		set ERROR_RESULT true
         		set ERROR_MESSAGE "Not connected."
         		return
+		}  "\n226 " {
+        		set loop false
+        		expect "ftp>"
+        		send "quit\r"
         	} "File transfer successful." {
         		set loop false
         		expect "ftp>"
