@@ -20,7 +20,7 @@
 	
 	<command name="backup_running_config_scp" method="SCP">
 		<error>Failed to dump configuration in CLI via scp.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
-		<require-mode>exec</require-mode>
+		<require-mode>initialize</require-mode>
 		<script>
             backup_running_config_scp.tcl
 		</script>
