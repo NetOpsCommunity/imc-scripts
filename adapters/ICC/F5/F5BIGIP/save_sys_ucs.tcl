@@ -26,6 +26,10 @@ while {$loop == "true"} {
             #OK
             set loop false
             expect $tmsh_prompt
+        } "Saving active configuration..." {
+            #OK
+            set loop false
+            expect $tmsh_prompt
         }
     }
 }
