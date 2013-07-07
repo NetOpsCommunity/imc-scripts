@@ -197,11 +197,10 @@ sub removeMores
 	my($rawdata) = @_;
 
 	$rawdata = stripCarriageReturns($rawdata);
-	$rawdata =~ s/\n<--- More --->\n//g;
-	$rawdata =~ s/ ?--More--[ \S]*[\s\cH]+\cH//g;
+	$rawdata =~ s/ ?<--- More --->[ \S]*[\s\cH]+\cH//g;
 	##
 	# ACNS
-	$rawdata =~ s/ ?--More--[\s\cH]+|\033\[K//g;
+	$rawdata =~ s/ ?<--- More --->[\s\cH]+|\033\[K//g;
 	return $rawdata;
 }
 
@@ -218,7 +217,7 @@ sub cleanupConfiguration
 	my($config) = @_;
 	my(@array) = ();
 	
-	$start = index($config, "!");
+	$start = index($config, "hostname");
 	if ($start == -1)
 	{
 		$start = 0;
@@ -226,7 +225,7 @@ sub cleanupConfiguration
 
 	$stop = -1;
 	$pos = -1;
-	while (($pos = index($config, ": end", $pos)) > -1)
+	while (($pos = index($config, "Cryptochecksum", $pos)) > -1)
 	{
 		$stop = $pos;
 		$pos++;
@@ -234,7 +233,7 @@ sub cleanupConfiguration
 
 	if ($stop > -1)
 	{
-		$cleanConfig = substr($config, $start, $stop-$start);
+		$cleanConfig = substr($config, $start, $stop-$start+47);
 	}
 	else
 	{
@@ -263,13 +262,32 @@ sub cleanupConfiguration
 		# do nothing
 	}
 	
+	# Sometimes, there could be a menu which spreads the lines out
+	$config = ();
+	foreach $line (split(/\n/, $cleanConfig)){
+		if($line =~ /^menu (\S+) title \^C(.*)/)
+		{
+			$line = "menu $1 title \cC$2";
+		}
+		elsif($line =~ /\^C$/)
+		{
+			$line =~ s/(\^C)$/\cC/;
+		}
+		
+		if($line =~ /\S+ \^C/)
+		{
+			$line =~ s/(\S+) \^C/$1 \cC/;
+		}
+	
+		$config = $config . $line . "\n";
+
+	}
+	
 	##
 	# ACNS remove CLI prompts
-	$cleanConfig =~ s/\n\S+#\n/\n/g;
-	$cleanConfig =~ s/\n\S+#.*\n//g;
-	# Strip blank lines, and blank last line
-	$cleanConfig =~ s/\n\n$/\n/g;
-	$cleanConfig =~ s/\n\n/\n/g;
+	$config =~ s/\n\S+#\n/\n/g;
+	
+	$cleanConfig = $config;
 
 	return $cleanConfig;
 }

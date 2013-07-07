@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<definition>
+
+	<action name="backup_running_config">
+	    <step>
+    		<command name="backup_running_config_tftp" description="Backup running configuration via TFTP through CLI">
+    		</command>
+    		<command name="backup_running_config_scp" description="Backup running configuration via scp">
+                    <step>
+                        <command name="copy_running_config" description="copy running configuration via CLI"/>
+                    </step>
+                    <step>
+                        <command name="backup_running_config_scp" description="Backup running configuration via scp"/>
+                    </step>
+		    <step>
+                        <command name="delete_temporary_file" description="Delete temporary backup file created via CLI"/>
+                    </step>
+    		</command>
+    		<command name="backup_running_config_cli" description="Backup running configuration via CLI">
+    			<result name="running_configuration">
+    				<parser parserName="CleanupParser" parserRet="configuration" parserScript="cleanupConfiguration"/>
+    			</result>
+    		</command>
+		</step>
+	</action>
+
+	<action name="backup_startup_config">
+	    <step>
+    		<command name="backup_startup_config_tftp" description="Backup startup configuration via TFTP through CLI">
+    		</command>
+    		<command name="backup_startup_config_scp" description="Backup startup configuration via scp">    			
+                    <step>
+                        <command name="copy_startup_config" description="copy startup configuration via CLI"/>
+                    </step>
+                    <step>
+                        <command name="backup_startup_config_scp" description="Backup startup configuration via scp"/>
+                    </step>
+		    <step>
+                        <command name="delete_temporary_file" description="Delete temporary backup file created via CLI"/>
+                    </step>
+    		</command> 
+    		<command name="backup_startup_config_cli" description="Backup startup configuration via CLI">
+    			<result name="startup_configuration">
+    				<parser parserName="CleanupParser" parserRet="configuration" parserScript="cleanupConfiguration"/>
+    			</result>
+    		</command>
+		</step>
+	</action>  
+</definition>
+

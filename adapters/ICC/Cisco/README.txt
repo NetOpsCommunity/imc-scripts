@@ -21,17 +21,14 @@ use TCL scripts. There doesn't seem to be any documentation for SNMP adapters.
 For more info, see this thread:
 http://www.netopscommunity.net/en_GB/forums/-/message_boards/message/54616
 
-The CiscoASA adapter has been modified to properly strip out the "<--- More --->" prompts seen when 
-doing a backup via CLI. There was also a bug with the parsing of the startup configuration, where it 
-would be truncated at the last extended ACL entry. This is because if you do a "show run", the last line
-is ": end", but if you do a "show startup", the last line is the Crypto checksum.
-All other files are left at default for the ASA adapter - you only need to copy CiscoASA/CiscoASA_Cleanup_Parser_Script.pl
-to your CiscoASA adapter directory.
+Cisco ASA Adapter changes:
+ * Rebased to IMC 5.2 Patch version (E0401P05)
+ * Added function and commands to delete temporary files created during SCP backups - otherwise temp files built up, eventually using all the space
+ * Fixed CiscoASA_Cleanup_Parser_Script.pl to work correctly for startup configs. Otherwise it was truncating at last extended ACL.
+
+All other files left at default - you only need to copy these files on top of the base IMC 5.2 Patch files.
 
 TODO: 
  * Change the ASA startup/running CLI adapters to display the snmp community-strings. This can be done with 
 "more system:running-config". If you use "show running-config" - as these scripts do - then community strings
-are masked.
- * There is also some further tidy-up worked required to cleanup the files backed up via SCP, to ensure that the backups
-look identical, regardless of if they are backed up via CLI or SCP. This should also help eliminate false positives
-with config change detection
+are masked. Needs equivalent command for startup configuration too
