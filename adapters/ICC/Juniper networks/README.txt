@@ -1,4 +1,5 @@
-This adapter is very closely based upon the version published with IMC 5.2.
+This adapter is very closely based upon the version published with IMC 5.2 Patch (E0401P05)
+Note that only changed files are distributed here - all other files are left as original
 
 Changes are:
 
