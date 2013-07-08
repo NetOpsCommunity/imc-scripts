@@ -2,7 +2,7 @@
 
 <scripts>
 	<command name="init_config_backup">
-		<error>Failed to delete row of h3cCfgOperateTable.</error>		
+		<error>Failed to delete row of ccCopyEntry.</error>		
 		<script>
             init_config_snmp.xml
 		</script>

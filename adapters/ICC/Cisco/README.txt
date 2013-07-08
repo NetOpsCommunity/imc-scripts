@@ -1,4 +1,6 @@
-These adapters is based upon the adapters written by HP.
+These adapters are based upon the adapters written by HP, and shipped with 5.2 Patch (E0401P05)
+
+Only these files included here have been changed. All others are left at default.
 
 The CiscoIOSGeneric adapter has been modified to strip out "ntp clock-period" from the stored backup files.
 
@@ -32,3 +34,5 @@ TODO:
  * Change the ASA startup/running CLI adapters to display the snmp community-strings. This can be done with 
 "more system:running-config". If you use "show running-config" - as these scripts do - then community strings
 are masked. Needs equivalent command for startup configuration too
+
+ * Figure out a way to run post-processing scripts with SNMP-based adapters
