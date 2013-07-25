@@ -1,0 +1,18 @@
+
+<adapter name="HPBladeOA">
+	<description>HP Blade Chassis Onboard Administratorx</description>
+	<version>1.0.0</version>
+	<services>
+		<service name="CLICommon">
+			<item type="common">HPBladeOA_CLI.xml</item>
+		</service>
+		<service name="CleanupParser">
+			<item type="parser_definition">HPBladeOA_Cleanup_Parser.xml</item>
+			<item type="perl_script">HPBladeOA_Cleanup_Parser_Script.pl</item>
+		</service>
+		<service name="ConfigBackup">
+			<item type="builder_definition">HPBladeOA_Config_Backup_Builder.xml</item>
+			<item type="tcl_script">HPBladeOA_Config_Backup_Builder_Script.xml</item>
+		</service>
+	</services>
+</adapter>
