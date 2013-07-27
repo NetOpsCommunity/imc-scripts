@@ -1,3 +1,20 @@
+This package contains two adapters - FabricOS is for Brocade Fibre Channel switches, while BrocadeGeneric can be used for ICX switches.
+
+BrocadeGeneric notes:
+
+This initial version only does CLI backups. The TFTP adapter may work, but it has not been tested. To use the TFTP adapter, uncomment it in BrocadeGeneric_Config_Backup_Builder.xml
+
+The whole adapter needs further testing and verification. 
+
+Todo:
+* Enable, test TFTP
+* Check if ICX systems support FTP, SFTP or SCP, and write adapters.
+* Update adapter-index.xml to enable support for a wider range of devices. It will probably work on others, but has only been checked on a 6610.
+* Enable pushing configs via CLI, TFTP. Should work, but currently disabled.
+
+
+FabricOS notes:
+
 Initial adapter written by Lindsay Hill (lindsay.k.hill@gmail.com)
 
 This was tested with FabricOS 6.2 and 6.4 systems. Backups only. No pushing configs. It uses SSH or Telnet to connect to a device and run configshow -all.
