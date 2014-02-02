@@ -80,7 +80,12 @@ while { $loop == "true" } {
 			set ERROR_RESULT true
 			set ERROR_MESSAGE "Failed to contact tftp server; server may be down."
 			set loop false
-		} -re $error_pattern {
+		} "Failed to connect to the remote host" {
+			expect -re $exec_prompt
+			set ERROR_RESULT true
+			set ERROR_MESSAGE "Failed to contact tftp server; server may be down."
+			set loop false
+		}	-re $error_pattern {
 			set error_message $expect_out(1,string)
 			expect -re $exec_prompt
 			set ERROR_RESULT  true

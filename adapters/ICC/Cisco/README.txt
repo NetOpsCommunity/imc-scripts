@@ -1,6 +1,11 @@
-These adapters are based upon the adapters written by HP, and shipped with 5.2 Patch (E0401P05)
+These adapters are based upon the adapters written by HP, and shipped with 7.0 Patch 1 (E0102L03)
 
 Only these files included here have been changed. All others are left at default.
+
+You should install IMC 7.0 Patch 1 before making these modifications
+
+adapter-index.xml has been updated to support more Cisco devices - e.g. the 2960S. If you are having 
+problems with these devices, upload this new adapter-index.xml, restart IMC, and re-synchronize the devices.
 
 The CiscoIOSGeneric adapter has been modified to strip out "ntp clock-period" from the stored backup files.
 
@@ -23,16 +28,8 @@ use TCL scripts. There doesn't seem to be any documentation for SNMP adapters.
 For more info, see this thread:
 http://www.netopscommunity.net/en_GB/forums/-/message_boards/message/54616
 
-Cisco ASA Adapter changes:
- * Rebased to IMC 5.2 Patch version (E0401P05)
- * Added function and commands to delete temporary files created during SCP backups - otherwise temp files built up, eventually using all the space
- * Fixed CiscoASA_Cleanup_Parser_Script.pl to work correctly for startup configs. Otherwise it was truncating at last extended ACL.
+We previously included modifications to the CiscoASA adapter to ensure that temporary files were deleted.
+HP has now resolved this in IMC v7. You should update to an HP-supported version of this adapter.
 
-All other files left at default - you only need to copy these files on top of the base IMC 5.2 Patch files.
-
-TODO: 
- * Change the ASA startup/running CLI adapters to display the snmp community-strings. This can be done with 
-"more system:running-config". If you use "show running-config" - as these scripts do - then community strings
-are masked. Needs equivalent command for startup configuration too
-
+TODO
  * Figure out a way to run post-processing scripts with SNMP-based adapters

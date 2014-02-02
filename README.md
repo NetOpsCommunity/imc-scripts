@@ -18,9 +18,7 @@ If the sysObjectID is not currently known by IMC, you will also need to add the 
 
 
 
-
-
-You can also email lindsay.k.hill@gmail.com if you're having any problems.
+You can also email lindsay@lkhill.com if you're having any problems.
 
 ====== eAPI Scripts =========
 

@@ -16,6 +16,11 @@
     </type> 
     
     <type name="CLI">
+
+        <adapter name="Yellowknife">
+                <description>Yellowknife - HP 501 Wireless Client Bridge</description>
+            <sysoid>1.3.6.1.4.1.11.2.3.7.11.162.1</sysoid>
+        </adapter>
         
         <adapter name="HPProcurveStack">
     		<description>HP ProCurve stack switches</description>

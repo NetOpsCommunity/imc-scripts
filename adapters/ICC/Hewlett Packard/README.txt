@@ -11,4 +11,4 @@ just assume that the TFTP or FTP upload has completed. Needs to be tested to fin
 what sort of error messages you might see when a TFTP/FTP upload fails.
 
 This package also includes an updated adapter-index.xml file, which contains sysOID references 
-pointing to the new adapters
+pointing to the new adapters. This was based on IMC 7.0 E0102L03.
