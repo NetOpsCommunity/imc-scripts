@@ -1,4 +1,4 @@
-This adapter is very closely based upon the version published with IMC 7.0 patch 1 (E0102L03)
+This adapter is very closely based upon the version published with IMC 7.0 (E0202)
 
 You should install this version of IMC before installing these files. Only changed files are
 distributed - all others are left as original.
@@ -6,8 +6,6 @@ distributed - all others are left as original.
 Changes are:
 
 * sysoid for SRX-110VA and SRX-650 added to adapter-index.xml - uses JuniperGeneric adapter
-
-* enter_exec.tcl modified to store new SSH key in cache
 
 If you are having problems with your Juniper devices, install this adapter, over-writing the existing files. Restart IMC.
 
