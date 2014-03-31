@@ -1,8 +1,8 @@
-These adapters are based upon the adapters written by HP, and shipped with 7.0 Patch 1 (E0102L03)
+These adapters are based upon the adapters written by HP, and shipped with 7.0 Patch E0202
 
 Only these files included here have been changed. All others are left at default.
 
-You should install IMC 7.0 Patch 1 before making these modifications
+You should install IMC 7.0 E0202 before making these modifications
 
 adapter-index.xml has been updated to support more Cisco devices - e.g. the 2960S. If you are having 
 problems with these devices, upload this new adapter-index.xml, restart IMC, and re-synchronize the devices.
