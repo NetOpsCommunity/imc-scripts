@@ -67,7 +67,12 @@ expect "*"
 
 set loop true
 
-set my_cmd "tftp $TFTPServer put iccrunning.cfg $TFTPFile"
+set pos_ [string first "::" $TFTPServer]
+if {$pos_ != -1} {
+   set my_cmd "tftp ipv6 $TFTPServer put iccrunning.cfg $TFTPFile"
+} else {
+   set my_cmd "tftp $TFTPServer put iccrunning.cfg $TFTPFile"
+}
 if { $VpnName != "" } {
    append my_cmd " vpn-instance $VpnName"
 }
