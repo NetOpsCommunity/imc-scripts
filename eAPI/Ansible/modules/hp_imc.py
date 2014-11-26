@@ -155,28 +155,40 @@ class IMCDevice(object):
         self.dev_id = None
         self.ip_addr = None
         self.hostname = None
-        self.imc_conn = IMCConnection()
+        self.urlpath = None
+        self.imcconn = IMCConnection()
+        self.deviceDetailData = None
+
+    def installIMCConnection(self,imc_conn):
+        self.imcconn = imc_conn
 
     def isManaged(self):
-        # Check if system is currently managed or not
-        # Always use deviceID if specified.  Build the URL
-        if self.dev_id is not None:
-            urlpath = "/imcrs/plat/res/device/" + self.dev_id
-        elif self.ip_addr is not None:
-            urlpath = "/imcrs/plat/res/device?ip=" + self.ip_addr
-        else:
-            urlpath = "/imcrs/plat/res/device?label=" + self.hostname
-
-
+        # Parse data from getDeviceDetails
+        if self.deviceDetailData is None:
+            self.deviceDetailData = self.getDeviceDetails()
+        status = self.imcconn.parseData(self.deviceDetailData,'status')
 
     def isProvisioned(self):
-    # Check if the system is currently provisioned or not
-        return
+        # Parse data from getDeviceDetails
+        if self.deviceDetailData is None:
+            self.deviceDetailData = self.getDeviceDetails()
+
+    def getDeviceDetails(self):
+        if self.dev_id is None:
+            self.dev_id = self.getDevId()
+        deviceURL = "http://" + self.imcconn.host + ":" + self.imcconn.port + "/imcrs/plat/res/device/" + self.dev_id
+        return self.imcconn.get(deviceURL)
 
     def getDevId(self):
         # Get the DeviceID in IMC from the IP Address or system name
-        return
+        if self.dev_id is not None:
+            return self.dev_id
+        elif self.ip_addr is not None:
+            self.urlpath = "/imcrs/plat/res/device?ip=" + self.ip_addr
+        else:
+            self.urlpath = "/imcrs/plat/res/device?label=" + self.hostname
 
+        xmlData = self.imcconn.get(self.urlpath)
 
 class IMCConnection(object):
 
@@ -204,7 +216,10 @@ class IMCConnection(object):
         data_encoded = urllib.urlencode(data)
         return urllib2.urlopen(url,data_encoded).read()
 
-
+    def parseData(self,xmldata,key):
+        # Parse data from xmldata and return value for 'key'
+        
+        return
 
 
 
