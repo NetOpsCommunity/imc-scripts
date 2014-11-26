@@ -19,16 +19,17 @@
 import urllib2
 from ansible.module_utils.basic import *
 import urllib
+import xml.etree.ElementTree as ET
 
 DOCUMENTATION = '''
 ---
 module: hp_imc
 short_description: Performs monitoring, provisioning, and configuration functions inside HP IMC for the device
 description:
-  - The M(hp_imc_monitoring) module currently has two basic functions: Unmanage/Manage a device to prevent notifications or polling during scheduled maintenance.
+  - The M(hp_imc_monitoring) module currently has two basic functions: Unmanage/Manage a device to prevent notifications/polling during scheduled maintenance.
   - This module can also auto-provision a new device into IMC.
-  - All actions require either I(hostname) parameter, or the I(dev_id) parameter.
-  - In playbooks you can use the C({{inventory_hostname}}) or the C({{ansible_default_ipv4.address}}) variable to refer to the I(hostname) the playbook is currently running on.
+  - All actions require either I(hostname) parameter, the I(dev_id) parameter, or the I(ip_addr) parameter of the device.
+  - In playbooks you can use the C({{inventory_hostname}}) or the C({{ansible_default_ipv4.address}}) variables in a playbook.
   - When using the M(hp_imc_monitoring) module you will need to specify your IMC Master server using the I(imc_host) parameter.
   - The I(imc_user) and I(imc_pass) refer to a user account that has permissions for the action being performed.
 version_added: "0.1"
@@ -41,12 +42,17 @@ options:
     choices: [ "unmanage", "manage", "provision" ]
   hostname:
     description:
-      - IP Address or name of the host to run action on.
+      - Name of the host in IMC
     required: false
     default: null
   dev_id:
     description:
       - Device ID of the host in IMC
+    required: false
+    default: null
+  ip_addr:
+    description:
+      - IP Address of the host in IMC
     required: false
     default: null
   imc_host:
@@ -133,22 +139,44 @@ class IMCServer(object):
 
         self.imc_master = IMCConnection(self.imc_host,self.imc_port,self.imc_user.self,self.imc_pass)
 
+    def run(self):
+        # Used to run the module.  Identify what we need to do
+        if self.action == 'manage':
+            return
+        elif self.action == 'unmanage':
+            return
+        elif self.action == 'provision':
+            return
+        return
+
+class IMCDevice(object):
+
+    def __init__(self):
+        self.dev_id = None
+        self.ip_addr = None
+        self.hostname = None
+        self.imc_conn = IMCConnection()
 
     def isManaged(self):
         # Check if system is currently managed or not
         # Always use deviceID if specified.  Build the URL
-        if self.dev_id is None:
-            # Search for Device ID
-            url = ""
+        if self.dev_id is not None:
+            urlpath = "/imcrs/plat/res/device/" + self.dev_id
+        elif self.ip_addr is not None:
+            urlpath = "/imcrs/plat/res/device?ip=" + self.ip_addr
+        else:
+            urlpath = "/imcrs/plat/res/device?label=" + self.hostname
+
 
 
     def isProvisioned(self):
     # Check if the system is currently provisioned or not
         return
 
-    def run(self):
-    # Used to run the module
+    def getDevId(self):
+        # Get the DeviceID in IMC from the IP Address or system name
         return
+
 
 class IMCConnection(object):
 
