@@ -166,7 +166,7 @@ class IMCDevice(object):
         # Parse data from getDeviceDetails
         if self.deviceDetailData is None:
             self.deviceDetailData = self.getDeviceDetails()
-        status = self.imcconn.parseData(self.deviceDetailData,'status')
+        status = self.imcconn.getKeyValue(self.deviceDetailData,'status')
 
     def isProvisioned(self):
         # Parse data from getDeviceDetails
@@ -188,7 +188,6 @@ class IMCDevice(object):
         else:
             self.urlpath = "/imcrs/plat/res/device?label=" + self.hostname
 
-        xmlData = self.imcconn.get(self.urlpath)
 
 class IMCConnection(object):
 
@@ -216,10 +215,55 @@ class IMCConnection(object):
         data_encoded = urllib.urlencode(data)
         return urllib2.urlopen(url,data_encoded).read()
 
-    def parseData(self,xmldata,key):
+    def getKeyValue(self,xmldata,key):
         # Parse data from xmldata and return value for 'key'
-        
+        # Since we cannot pull a key from multiple values, we must check if there is only 1 value
+        root = ET.fromstring(xmldata)
+        if self.isDevice(xmldata):
+            return root.findall('./'+key)[0].text
+        if self.isList(xmldata):
+          if self.countDataList(xmldata) == 1:
+            for child in root:
+              if child.tag == 'device':
+                return root.findall('./device/'+key)[0].text
+        return None
+
+    def findDevId(self,xmldata,ip_addr=None,hostname=None):
+        if self.isList(xmldata):
+            root = ET.fromstring(xmldata)
+            entryCount = len(root.findall('./device/id'))
+            for x in xrange(entryCount):
+                if ip_addr is not None:
+                    if ip_addr==root.findall('./device/ip')[x].text:
+                        return root.findall('./device/id')[x].text
+                elif hostname is not None:
+                    if hostname==root.findall('./device/sysName')[x].text:
+                        return root.findall('./device/id')[x].text
+                else:
+                    return None
+        return None
+
+    def findDevIdByName(self,hostname,xmldata):
         return
+
+    def isList(self,xmldata):
+        root = ET.fromstring(xmldata)
+        if root.tag == "list":
+            return True
+        return False
+
+    def isDevice(self,xmldata):
+        root = ET.fromstring(xmldata)
+        if root.tag == 'device':
+            return True
+        return False
+
+    def countDataList(self,xmldata):
+        self.count = 0
+        root = ET.fromstring(xmldata)
+        for child in root:
+            self.count = self.count+1
+        return self.count
 
 
 
