@@ -2,8 +2,7 @@
 
 class IMCTestDeviceData(object):
 
-    deviceList = """
-    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    DEVICELIST = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <list>
   <device>
     <id>6</id>
@@ -158,8 +157,7 @@ class IMCTestDeviceData(object):
 </list>
 """
     
-    deviceManaged = """
-        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    deviceManaged = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <device>
   <id>562</id>
   <label>switch1</label>
@@ -213,8 +211,7 @@ class IMCTestDeviceData(object):
   <interfaces>http://imc_test:8080/imcrs/plat/res/device/562/interface</interfaces>
 </device>
 """
-    deviceUnManagedList = """
-        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    deviceUnManagedList = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <list>
   <device>
     <id>12</id>
@@ -244,8 +241,7 @@ class IMCTestDeviceData(object):
 </list>
     """
 
-    deviceUnManaged = """
-        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    deviceUnManaged = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <device>
   <id>12</id>
   <label>router1</label>
