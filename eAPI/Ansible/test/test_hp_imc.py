@@ -16,10 +16,12 @@
 
 import unittest
 from Ansible.modules.hp_imc import *
+from Ansible.test.test_xml_devData import IMCTestDeviceData
 
 class TestAnsibleIMCModule(unittest.TestCase):
 
     def setUp(self):
+        # Setup a connection to IMC Web Services
         unittest.TestCase.setUp(self)
         host = "10.200.0.95"
         port = "8080"
@@ -27,10 +29,33 @@ class TestAnsibleIMCModule(unittest.TestCase):
         passwd = "admin"
         self.imc_conn = IMCConnection(host,port,username,passwd)
 
+        # Load test XML Data
+        self.testDeviceListing = IMCTestDeviceData.DEVICELIST
+        self.testDeviceDataManaged = IMCTestDeviceData.deviceManaged
+        self.testDeviceDataUnmanaged = IMCTestDeviceData.deviceUnManaged
+        self.testDeviceDataManagedList = IMCTestDeviceData.deviceUnManagedList
+
     def test_IMCConnection(self):
-        data = self.imc_conn.get("http://usnassrv53.cd.corp:8080/imcrs")
+        # Make a call to IMC web services and make sure we are authorized
+        data = self.imc_conn.get("http://10.200.0.95:8080/imcrs")
         self.assertEqual(data.getcode(),200)
 
+    def test_countDataList(self):
+        count = self.imc_conn.countDataList(self.testDeviceListing)
+        self.assertEqual(count,6)
+
+    def test_isList(self):
+        self.assertTrue(self.imc_conn.isList(self.testDeviceListing))
+        self.assertFalse(self.imc_conn.isList(self.testDeviceDataUnmanaged))
+
+    def test_getKeyValue(self):
+        self.assertEqual(self.imc_conn.getKeyValue(self.testDeviceListing,'label'),None)
+        self.assertEqual(self.imc_conn.getKeyValue(self.testDeviceDataManaged,'label'),'switch1')
+        self.assertEqual(self.imc_conn.getKeyValue(self.testDeviceDataUnmanaged,'label'),'router1')
+
+    def test_findDevId(self):
+        self.assertEqual(self.imc_conn.findDevId(self.testDeviceListing,ip_addr='192.168.16.101'),'722')
+        self.assertEqual(self.imc_conn.findDevId(self.testDeviceListing,hostname='server3'),'731')
 
     if __name__ == '__main__':
         unittest.main()
