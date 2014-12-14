@@ -20,6 +20,7 @@ import urllib2
 from ansible.module_utils.basic import *
 import urllib
 import xml.etree.ElementTree as ET
+import re
 
 DOCUMENTATION = '''
 ---
@@ -142,7 +143,14 @@ class IMCServer(object):
     def run(self):
         # Used to run the module.  Identify what we need to do
         if self.action == 'manage':
-            return
+            host = IMCDevice()
+            host.setHostname(self.hostname)
+            host.installIMCConnection(self.imc_master)
+            if not host.isManaged():
+                if self.module.check_mode:
+                    module.exit_json(changed=True)
+
+
         elif self.action == 'unmanage':
             return
         elif self.action == 'provision':
@@ -162,11 +170,30 @@ class IMCDevice(object):
     def installIMCConnection(self,imc_conn):
         self.imcconn = imc_conn
 
+    def setHostname(self,hostname):
+        """
+        Check if hostname is an ip address or a name.  Set fields appropriately.
+        :param hostname:
+        :return: None
+        """
+        pattern = '\d*\.\d*\.\d*\.\d*'
+        match = re.search(pattern,hostname)
+        if match:
+            # It's an IP Address.  Set the field
+            self.ip_addr = hostname
+        else:
+            self.hostname = hostname
+
     def isManaged(self):
         # Parse data from getDeviceDetails
         if self.deviceDetailData is None:
             self.deviceDetailData = self.getDeviceDetails()
         status = self.imcconn.getKeyValue(self.deviceDetailData,'status')
+        if status != "unmanaged":
+            return True
+        else :
+            return False
+
 
     def isProvisioned(self):
         # Parse data from getDeviceDetails
@@ -187,7 +214,9 @@ class IMCDevice(object):
             self.urlpath = "/imcrs/plat/res/device?ip=" + self.ip_addr
         else:
             self.urlpath = "/imcrs/plat/res/device?label=" + self.hostname
-
+        xmldata = self.imcconn.get(self.urlpath)
+        self.dev_id = self.imcconn.findDevId(xmldata,self.ip_addr,self.hostname)
+        return self.dev_id
 
 class IMCConnection(object):
 
@@ -242,9 +271,6 @@ class IMCConnection(object):
                 else:
                     return None
         return None
-
-    def findDevIdByName(self,hostname,xmldata):
-        return
 
     def isList(self,xmldata):
         root = ET.fromstring(xmldata)
