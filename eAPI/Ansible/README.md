@@ -14,4 +14,4 @@ In the not-so-distant future, but after the inventory plugin, plans will be made
 
 ## Contributing to the code
 
-At this time, we do not a true "code convention" to place here.  For now, just fork the project, make your changes, commit with good log documentation, then submit a pull request from your fork.
+At this time, we do not have a true "code convention" to place here.  For now, just fork the project, make your changes, commit with good log documentation, then submit a pull request from your fork.
