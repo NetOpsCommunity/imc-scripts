@@ -23,3 +23,7 @@ You can also email lindsay@lkhill.com if you're having any problems.
 ====== eAPI Scripts =========
 
 Scripts for the eAPI are located in the folder eAPI/ folder.  Each folder should have it's own README.TXT on how to use it, and what it is for.
+
+* Ansible - Modules for Ansible-related actions.  You can use Ansible to automate lots of things, such as provisioning new devices, updates, config changes, etc.  
+* Cisco CCX - Test eAPI script.  Not really used for production, but is a Cisco UCCX Script which allows access into IMC Alarm data
+* DelayedAlarms - Script which does NOT use eAPI, for those customers who do not have the eAPI license in IMC
