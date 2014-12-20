@@ -140,19 +140,32 @@ class IMCServer(object):
 
         self.imc_master = IMCConnection(self.imc_host,self.imc_port,self.imc_user.self,self.imc_pass)
 
-    def run(self):
+    def run(self,module):
         # Used to run the module.  Identify what we need to do
+        host = IMCDevice()
+        host.setHostname(self.hostname)
+        host.installIMCConnection(self.imc_master)
+
         if self.action == 'manage':
-            host = IMCDevice()
-            host.setHostname(self.hostname)
-            host.installIMCConnection(self.imc_master)
             if not host.isManaged():
                 if self.module.check_mode:
                     module.exit_json(changed=True)
-
-
+                host.setManaged(True)
+                module.exit_json(changed=True)
+            else:
+                if self.module.check_mode:
+                    module.exit_json(changed=False)
+                module.exit_json(changed=False)
         elif self.action == 'unmanage':
-            return
+            if host.isManaged():
+                if self.module.check_mode:
+                    module.exit_json(changed=True)
+                host.setManaged(False)
+            else:
+                if self.module.check_mode:
+                    module.exit_json(changed=False)
+                module.exit_json(changed=False)
+                
         elif self.action == 'provision':
             return
         return
@@ -191,7 +204,7 @@ class IMCDevice(object):
         status = self.imcconn.getKeyValue(self.deviceDetailData,'status')
         if status != "unmanaged":
             return True
-        else :
+        else:
             return False
 
 
@@ -217,6 +230,13 @@ class IMCDevice(object):
         xmldata = self.imcconn.get(self.urlpath)
         self.dev_id = self.imcconn.findDevId(xmldata,self.ip_addr,self.hostname)
         return self.dev_id
+
+    def setManaged(self,state):
+        url = "http://" + self.imcconn.host + ":" + self.imcconn.port + "/imcrs/plat/res/device/" + self.getDevId()
+        if state == True:
+            status = self.imcconn.get(url + "/manage")
+        if state == False:
+            status = self.imcconn.get(url + "/unmanage")
 
 class IMCConnection(object):
 
