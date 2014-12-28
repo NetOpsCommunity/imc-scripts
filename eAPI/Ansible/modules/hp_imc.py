@@ -165,8 +165,8 @@ class IMCServer(object):
                 if self.module.check_mode:
                     module.exit_json(changed=False)
                 module.exit_json(changed=False)
-                
         elif self.action == 'provision':
+            #TODO Add Provisioning action
             return
         return
 
@@ -216,6 +216,8 @@ class IMCDevice(object):
     def getDeviceDetails(self):
         if self.dev_id is None:
             self.dev_id = self.getDevId()
+        if self.dev_id is None:
+            module.fail_json()
         deviceURL = "http://" + self.imcconn.host + ":" + self.imcconn.port + "/imcrs/plat/res/device/" + self.dev_id
         return self.imcconn.get(deviceURL)
 
@@ -234,9 +236,9 @@ class IMCDevice(object):
     def setManaged(self,state):
         url = "http://" + self.imcconn.host + ":" + self.imcconn.port + "/imcrs/plat/res/device/" + self.getDevId()
         if state == True:
-            status = self.imcconn.get(url + "/manage")
+            status = self.imcconn.put(url + "/manage")
         if state == False:
-            status = self.imcconn.get(url + "/unmanage")
+            status = self.imcconn.put(url + "/unmanage")
 
 class IMCConnection(object):
 
@@ -260,7 +262,7 @@ class IMCConnection(object):
     def get(self,url):
         return urllib2.urlopen(url)
 
-    def put(self,url,data):
+    def put(self,url,data=None):
         data_encoded = urllib.urlencode(data)
         return urllib2.urlopen(url,data_encoded).read()
 
