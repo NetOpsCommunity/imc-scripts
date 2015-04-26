@@ -16,12 +16,12 @@
     </type> 
     
     <type name="CLI">
-
+ 
         <adapter name="Yellowknife">
-                <description>Yellowknife - HP 501 Wireless Client Bridge</description>
-            <sysoid>1.3.6.1.4.1.11.2.3.7.11.162.1</sysoid>
-        </adapter>
-        
+    		<description>Yellowknife - HP 501 Wireless Client Bridge</description>
+            <sysoid>1.3.6.1.4.1.11.2.3.7.11.162.1</sysoid>		            
+        </adapter>       
+       
         <adapter name="HPProcurveStack">
     		<description>HP ProCurve stack switches</description>
             <sysoid>1.3.6.1.4.1.11.2.3.7.8.5.2</sysoid>     		
@@ -112,16 +112,11 @@
             <description>HP GbE2C device</description>
             <sysoid>1.3.6.1.4.1.11.2.3.7.11.33.4.1.1</sysoid>
         </adapter>    
- 	
-	<adapter name="HPFabricOS">
-            <description>HP OEM Brocade Switch</description>
-            <sysoid>1.3.6.1.4.1.1588.2.1.1.72</sysoid>
-        </adapter>    
 
-	<adapter name="HPBladeOA">
+        <adapter name="HPBladeOA">
             <description>HP OEM Blade Enclosure</description>
             <sysoid>1.3.6.1.4.1.11.5.7.1.2</sysoid>
-        </adapter>    
+        </adapter>
 
 	</type>
         

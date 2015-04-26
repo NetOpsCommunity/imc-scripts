@@ -91,13 +91,15 @@
             <sysoid>1.3.6.1.4.1.9.1.569</sysoid>
             <sysoid>1.3.6.1.4.1.9.1.538</sysoid>
             <sysoid>1.3.6.1.4.1.9.1.748</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.565</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.533</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.666</sysoid>
             <sysoid>1.3.6.1.4.1.9.1.1044</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.1045</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.1046</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.1047</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.1191</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.1208</sysoid>
+            <!--sysoid>1.3.6.1.4.1.9.1.1641</sysoid-->
+            <!--sysoid>1.3.6.1.4.1.9.1.1642</sysoid-->
+            <!--sysoid>1.3.6.1.4.1.9.1.1643</sysoid-->
+            <!--sysoid>1.3.6.1.4.1.9.1.1644</sysoid-->
+            <!--sysoid>1.3.6.1.4.1.9.1.1767</sysoid-->
+            <!--sysoid>1.3.6.1.4.1.9.1.1768</sysoid-->
     		<version series="CiscoSeries" vrp="" release=""/>
     		<defaultver series="CiscoSeries" vrp="" release=""/>
         </adapter>
@@ -148,16 +150,24 @@
             <sysoid>1.3.6.1.4.1.9.1.528</sysoid>
         </adapter>
     
-    <!--
-        <adapter name="CiscoCRS">
+        <adapter name="CiscoIOS_XR">
             <description>Cisco CRS, GSR 12016 and ASR 9K series Routers running IOS XR, version 3.x</description>
             <sysoid>1.3.6.1.4.1.9.1.643</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.613</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.822</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.823</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.612</sysoid>
             <sysoid>1.3.6.1.4.1.9.1.273</sysoid>
             <sysoid>1.3.6.1.4.1.9.1.1017</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.348</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.385</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.388</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.394</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.423</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.1018</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.1639</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.1640</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.1851</sysoid>
+            <sysoid>1.3.6.1.4.1.9.12.3.1.3.781</sysoid>
         </adapter>
-    -->
     
         <adapter name="CiscoCatNative">
             <description>Cisco switches, Catalyst 4000, 6000 and 7600 series, native mode, IOS version 12.x</description>
@@ -235,12 +245,8 @@
             <sysoid>1.3.6.1.4.1.9.1.736</sysoid>
             <sysoid>1.3.6.1.4.1.9.1.527</sysoid>
             <sysoid>1.3.6.1.4.1.9.1.797</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.798</sysoid>
             <sysoid>1.3.6.1.4.1.9.1.950</sysoid>
             <sysoid>1.3.6.1.4.1.9.1.951</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.1025</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.1208</sysoid>
-            <sysoid>1.3.6.1.4.1.9.1.1229</sysoid>
         </adapter>
     
         <adapter name="CiscoIOS7K">
@@ -399,6 +405,14 @@
         	<description>Cisco wireless airnet ac</description>
             <sysoid>1.3.6.1.4.1.9.1.1069</sysoid>
             <sysoid>1.3.6.1.4.1.14179.1.1.4.3</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.747</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.828</sysoid>
+            <sysoid>1.3.6.1.4.1.14179.1.1.4.2</sysoid>
+            <sysoid>1.3.6.1.4.1.14179.1.1.4.4</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.1279</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.1295</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.1615</sysoid>
+            <sysoid>1.3.6.1.4.1.9.1.1631</sysoid>
         </adapter>
 
         <adapter name="CiscoNX7K">
@@ -418,12 +432,20 @@
     		<version series="CiscoNexusSeries" vrp="" release=""/>
     		<defaultver series="CiscoNexusSeries" vrp="" release=""/>
         </adapter>
-	<adapter name="CiscoACE">
-		<description>Cisco ACE Application Switches</description>
-		<sysoid>1.3.6.1.4.1.9.1.1291</sysoid>
-		<sysoid>1.3.6.1.4.1.9.1.730</sysoid>
-		<sysoid>1.3.6.1.4.1.9.1.824</sysoid>
-	</adapter>
+        
+        
+        <adapter name="CiscoC2980G-A">
+        	<description>Cisco switches, Catalyst 2980, 2980G-A, OS version 5.x, 6.x, 7.x, 8.x</description>
+            <sysoid>1.3.6.1.4.1.9.5.51</sysoid>
+            <sysoid>1.3.6.1.4.1.9.5.49</sysoid>
+        </adapter>
+
+        <adapter name="CiscoACE">
+                <description>Cisco ACE Application Switches</description>
+                <sysoid>1.3.6.1.4.1.9.1.1291</sysoid>
+                <sysoid>1.3.6.1.4.1.9.1.730</sysoid>
+                <sysoid>1.3.6.1.4.1.9.1.824</sysoid>
+        </adapter>
 	</type>
         
     <type name= "SNMP">
