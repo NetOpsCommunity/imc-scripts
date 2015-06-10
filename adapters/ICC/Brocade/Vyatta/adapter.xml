@@ -1,0 +1,25 @@
+<adapter name="Vyatta">
+	<description>Vyatta Virtual Router</description>
+	<version>1.0.0</version>
+	<services>
+		<service name="CLICommon">
+			<item type="common">Vyatta_Common_CLI.xml</item>
+		</service>
+
+		<service name="CleanupParser">
+			<item type="parser_definition">Vyatta_Cleanup_Parser.xml</item>
+			<item type="perl_script">Vyatta_Cleanup_Parser_Script.pl</item>
+		</service>
+
+		<service name="ConfigBackup">
+			<item type="builder_definition">Vyatta_Config_Backup_Builder.xml</item>
+			<item type="tcl_script">Vyatta_Config_Backup_Builder_Script.xml</item>
+		</service>
+
+		<!--service name="ConfigDeploy">
+			<item type="builder_definition">Vyatta_Config_Deploy_Builder.xml</item>
+			<item type="tcl_script">Vyatta_Config_Deploy_Builder_Script.xml</item>
+		</service-->
+
+	</services>
+</adapter>
