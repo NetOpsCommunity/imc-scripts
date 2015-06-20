@@ -4,7 +4,7 @@
 
 	<command name="backup_running_config_tftp" method="TFTP">
 		<error>Failed to upload configuration to TFTP server.  TFTP server may be down, or incorrectly specified, command syntax may be incorrect, or prompts may not be what was expected.</error>		
-		<require-mode>enable</require-mode>		
+		<require-mode>config</require-mode>		
 		<script>
             backup_running_config_tftp.tcl
 		</script>
@@ -20,7 +20,7 @@
 	
 	<command name="backup_running_config_ftp" method="FTP">
 		<error>Failed to upload configuration to FTP server. FTP server may be down, or incorrectly specified, command syntax may be incorrect, or prompts may not be what was expected.</error>
-		<require-mode>enable</require-mode>
+		<require-mode>config</require-mode>
 		<script>
             backup_running_config_ftp.tcl
 		</script>

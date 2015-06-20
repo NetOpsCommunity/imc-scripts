@@ -41,6 +41,9 @@ while {$loop == "true"} {
 			set ERROR_RESULT true
 			set loop false
 			expect $enable_prompt
+		} -re "\r\n.+$exec_prompt" {
+			# Done
+			set loop false
 		} -re "\r\n.+$enable_prompt" {
 			# Done
 			set loop false

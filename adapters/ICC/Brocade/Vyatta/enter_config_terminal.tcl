@@ -4,7 +4,7 @@
 # Purpose:       enter the "config terminal" mode on the device
 #**************************************************************************
 
-    send "config terminal\r"
+    send "configure\r"
     expect {
         -re "nvalid" {
             set ERROR_MESSAGE "Could not enter configuration mode."

@@ -14,9 +14,9 @@ append TFTPFileLocal "/../bin/"
 append TFTPFileLocal $FileName
 
 if { $keyfile != "" } {
-   spawn pscp -scp -i \"$keyfile\" $username@$deviceip:startup-config $FileName
+   spawn pscp -scp -i \"$keyfile\" $username@$deviceip:/config/config.boot $FileName
 } else {
-   spawn pscp -scp $username@$deviceip:startup-config $FileName
+   spawn pscp -scp $username@$deviceip:/config/config.boot $FileName
 }
 
 set password_prompt "assword:|PASSCODE:"

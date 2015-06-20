@@ -33,7 +33,7 @@
 
     <mode name="config_term" method="CLI">
         <error>Failed to get to configure terminal mode.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
-        <require-mode>enable</require-mode>
+        <require-mode>exec</require-mode>
         <enter>
             enter_config_terminal.tcl
         </enter>

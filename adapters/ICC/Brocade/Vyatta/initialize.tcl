@@ -17,8 +17,8 @@
     set orig_exec_prompt >
     set orig_enable_prompt #
     set exec_prompt "\\$ "
-    set enable_prompt #
-    set config_prompt "\\)#"
+    set enable_prompt "\[a-zA-Z\]# "
+    set config_prompt "\[a-zA-Z\]# "
     set enforce_save false
     set timeout $standard_timeout
     set more_prompt --More--
