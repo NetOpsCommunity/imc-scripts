@@ -21,7 +21,7 @@
                         set loop false
                     } -re $config_prompt {
 
-                    } -re $enable_prompt {
+                    } -re $exec_prompt {
                         set loop false
                     } $orig_enable_prompt {
 						set loop false

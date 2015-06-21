@@ -23,8 +23,7 @@
 			send "\r"
 			expect "bytes copied"
 			expect $enable_prompt
-		} "Done" {
-		} $enable_prompt {
+		} $exec_prompt {
 		}
 	}
 	if { $ERROR_RESULT != "true" } {
