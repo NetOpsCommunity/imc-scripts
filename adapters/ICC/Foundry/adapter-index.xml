@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--sysoid adapt adapter-->
+<adapters>
+
+    <type name="CLI">
+        
+        <adapter name="FoundryNetIron">
+    		<description>Brocade (formerly Foundry) FastIron Switches, v3.x, 4.0.01T3e3, 7.x, 9.x, 10.x &amp; NetIron Switches, v7.x</description>
+                <sysoid>1.3.6.1.4.1.1991.1.3.1.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.1.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.2.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.3.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.3.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.3.3</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.4.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.4.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.5.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.5.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.5.3</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.5.4</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.6.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.6.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.6.3</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.7.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.7.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.7.3</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.8.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.8.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.9.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.9.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.10.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.11.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.12.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.12.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.13.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.13.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.14.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.14.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.14.3</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.15.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.16.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.16.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.17.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.16.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.17.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.17.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.18.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.18.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.19.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.19.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.20.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.20.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.21.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.21.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.21.3</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.22.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.22.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.23.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.23.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.24.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.24.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.25.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.26.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.26.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.27.1</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.27.2</sysoid>
+                <sysoid>1.3.6.1.4.1.1991.1.3.34.1.1.1.2</sysoid>
+        </adapter>    
+           
+    </type>
+</adapters>

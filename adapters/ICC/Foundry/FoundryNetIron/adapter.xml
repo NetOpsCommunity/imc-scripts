@@ -1,0 +1,30 @@
+
+<adapter name="FoundryNetIron">
+	<description>Brocade (formerly Foundry) FastIron Switches, v3.x, 4.0.01T3e3, 7.x, 9.x, 10.x &amp; NetIron Switches, v7.x</description>
+	<version>1.0.0</version>
+	<services>
+		<service name="CLICommon">
+			<item type="common">FoundryNetIron_Common_CLI.xml</item>
+		</service>
+
+		<service name="CleanupParser">
+			<item type="parser_definition">FoundryNetIron_Cleanup_Parser.xml</item>
+			<item type="perl_script">FoundryNetIron_Cleanup_Parser_Script.pl</item>
+		</service>
+
+		<service name="ConfigBackup">
+			<item type="builder_definition">FoundryNetIron_Config_Backup_Builder.xml</item>
+			<item type="tcl_script">FoundryNetIron_Config_Backup_Builder_Script.xml</item>
+		</service>
+		
+		<service name="ConfigDeploy">
+			<item type="builder_definition">FoundryNetIron_Config_Deploy_Builder.xml</item>
+			<item type="tcl_script">FoundryNetIron_Config_Deploy_Builder_Script.xml</item>
+		</service>		
+		<service name="ImageDeploy">
+			<item type="builder_definition">FoundryNetIron_Image_Deploy_Builder.xml</item>
+			<item type="tcl_script">FoundryNetIron_Image_Deploy_Builder_Script.xml</item>
+		</service>		
+	</services>
+</adapter>
+

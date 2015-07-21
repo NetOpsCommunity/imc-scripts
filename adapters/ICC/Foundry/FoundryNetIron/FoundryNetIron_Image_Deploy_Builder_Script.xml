@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<scripts>
+
+	<command name="deploy_image" method="TFTP">
+		<error>Incomplete command. Tftp: the flash space is not enough, or something with flash is wrong.  Files transmission failure.  </error>		
+		<require-mode>enable</require-mode>		
+		<script>
+            deploy_image.tcl
+		</script>
+	</command>
+	
+	<command name="deploy_image" method="SCP">
+		<error>Failed to deploy image by SCP.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>connect</require-mode>		
+		<script>
+            deploy_image_scp.tcl
+		</script>
+	</command>
+
+  <command name="get_partion_info" method="CLI">
+		<error>Failed to get partion information in CLI.  Command syntax may be incorrect, or prompts may not be what was expected.</error>
+		<require-mode>enable</require-mode>
+		<script>
+            get_partion_info.tcl
+		</script>
+	</command>
+</scripts>
