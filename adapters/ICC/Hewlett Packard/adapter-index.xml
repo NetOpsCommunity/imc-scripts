@@ -18,7 +18,7 @@
     <type name="CLI">
  
         <adapter name="Yellowknife">
-    		<description>Yellowknife - HP 501 Wireless Client Bridge</description>
+    		<description>Yellowknife - HP 501 Wireless Client Bridge，OS version 1.0.0.0-0001，1.0.0.0-0003</description>
             <sysoid>1.3.6.1.4.1.11.2.3.7.11.162.1</sysoid>		            
         </adapter>       
        
