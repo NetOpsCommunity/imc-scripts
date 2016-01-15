@@ -1,6 +1,6 @@
-The Aruba, Brocade, F5 and Nortel networks packages have been removed.
+The Aruba, Brocade, F5 Hewlett-Packard and Nortel networks adapter customisations have been removed
 
-As of IMC 7.1, HP has either added those adapters, or fixed the problems with them.
+As of IMC 7.2, HP has either added those adapters, or fixed the problems with them.
 
 You should install the most current version + patch.
 

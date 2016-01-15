@@ -1,8 +1,8 @@
-These adapters are based upon the adapters written by HP, and shipped with 7.1 E0303P10
+These adapters are based upon the adapters written by HP, and shipped with 7.2 E0403
 
 Only these files included here have been changed. All others are left at default.
 
-You should install IMC 7.1 E0303P10 before making these modifications
+You should install IMC 7.2 E0403 before making these modifications
 
 adapter-index.xml has been updated to support CiscoACE devices
 
