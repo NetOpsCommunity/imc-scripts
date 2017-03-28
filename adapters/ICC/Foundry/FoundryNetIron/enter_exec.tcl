@@ -39,6 +39,8 @@ while { $loop == "true" } {
 			send "$username\r"
 		} -re $exec_prompt {
 			set loop false
+		} -re $enable_prompt {
+			set loop false
 		} 
 	}
 }
